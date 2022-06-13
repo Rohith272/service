@@ -1,0 +1,45 @@
+<div class="total">
+  <div class="head">
+    <mat-card>
+      <h2>Student Details</h2>
+    </mat-card>
+  </div>
+  <h1 *ngFor="let clickedRow of clickedRows" save()>
+    Clicked on {{clickedRow.name}}
+</h1>
+  <div class=".example-container">
+    <div class="form">
+      <app-detailsform (update)="updateList($event)" [student]="currentStudent"></app-detailsform>
+      <br>
+      <br>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="hd">Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+    
+        <ng-container matColumnDef="cls">
+          <th mat-header-cell *matHeaderCellDef class="hd">Mark </th>
+          <td mat-cell *matCellDef="let element"> {{element.cls}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef class="hd">Phone</th>
+          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
+    
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="send(this.elem=this.row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        
+      </table>
+    
+    </div>
+    
+    
+  </div>
+</div>
